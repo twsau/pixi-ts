@@ -2,7 +2,7 @@ import { Assets, Container, Graphics } from "pixi.js";
 import { IScene } from ".";
 import { Game } from "../Game";
 import { manifest } from "../assets";
-import { ExampleScene } from "./Example";
+import { PatternScene } from "./Pattern";
 
 export class LoadingScene extends Container implements IScene {
   private loaderBar: Container;
@@ -41,7 +41,7 @@ export class LoadingScene extends Container implements IScene {
   }
 
   private gameLoaded(): void {
-    Game.loadScene(new ExampleScene());
+    Game.loadScene(new PatternScene());
   }
 
   private async initializeLoader(): Promise<void> {
