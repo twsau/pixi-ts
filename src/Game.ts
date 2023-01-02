@@ -5,12 +5,19 @@ export class Game {
   private constructor() {}
   private static app: Application;
   private static currentScene: IScene;
+  private static _width: number;
+  private static _height: number;
+
+  public static get width(): number {
+    return Game._width;
+  }
+  public static get height(): number {
+    return Game._height;
+  }
 
   private static handleResize(): void {
-    Game.app.renderer.resize(window.innerWidth, window.innerHeight);
-    window.addEventListener("resize", () =>
-      Game.app.renderer.resize(window.innerWidth, window.innerHeight)
-    );
+    Game.resize();
+    window.addEventListener("resize", () => Game.resize());
   }
 
   public static initialize(config?: IRendererOptions): void {
@@ -36,7 +43,13 @@ export class Game {
     Game.currentScene.destroy();
   }
 
-  public static update(framesPassed: number): void {
-    if (Game.currentScene) Game.currentScene.update(framesPassed);
+  private static resize(): void {
+    Game.app.renderer.resize(window.innerWidth, window.innerHeight);
+    Game._width = Game.app.renderer.width;
+    Game._height = Game.app.renderer.height;
+  }
+
+  public static update(delta: number): void {
+    if (Game.currentScene) Game.currentScene.update(delta);
   }
 }

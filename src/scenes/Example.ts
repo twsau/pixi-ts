@@ -13,7 +13,7 @@ export class ExampleScene extends Container implements IScene {
     this.addChild(this.box);
   }
 
-  update(framesPassed: number) {
+  update(delta: number) {
     if (
       this.box.transform.position.x < 0 ||
       this.box.transform.position.x >= window.innerWidth - this.box.width

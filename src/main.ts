@@ -1,14 +1,9 @@
 import { Game } from "./Game";
-import { IScene } from "./scenes";
-import { ExampleScene } from "./scenes/Example";
-
-const scenes: Record<string, IScene> = {
-  example: new ExampleScene(),
-};
+import { LoadingScene } from "./scenes/Loading";
 
 const main = async () => {
   Game.initialize();
-  Game.loadScene(scenes.example);
+  Game.loadScene(new LoadingScene());
 };
 
 main();
