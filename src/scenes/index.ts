@@ -1,5 +1,5 @@
 import { DisplayObject } from "pixi.js";
 
 export interface IScene extends DisplayObject {
-  update(delta: number): void;
+  update(_delta: number): void;
 }

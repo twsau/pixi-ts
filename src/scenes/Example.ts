@@ -14,7 +14,7 @@ export class ExampleScene extends Container implements IScene {
     this.addChild(this.logo);
   }
 
-  update(delta: number) {
+  update(_delta: number) {
     if (
       this.logo.transform.position.x < 0 ||
       this.logo.transform.position.x >= window.innerWidth - this.logo.width

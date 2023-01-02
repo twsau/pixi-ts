@@ -50,5 +50,5 @@ export class LoadingScene extends Container implements IScene {
     await Assets.loadBundle(bundleIds, this.downloadProgress.bind(this));
   }
 
-  update(delta: number): void {}
+  update(_delta: number): void {}
 }
