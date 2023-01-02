@@ -1,20 +1,19 @@
-import { Application, Container } from "pixi.js";
-import { Scene } from "..";
-import { Box } from "../../object/Box";
+import { Container } from "pixi.js";
+import { IScene } from ".";
+import { Box } from "../object/Box";
 
-class Example extends Scene {
-  box: Container;
-  state: { velocity: { x: number; y: number } };
+export class ExampleScene extends Container implements IScene {
+  private box: Container;
+  private state: { velocity: { x: number; y: number } };
 
-  constructor(app: Application) {
-    super(app);
+  constructor() {
+    super();
     this.state = { velocity: { x: 1, y: 1 } };
-
     this.box = new Box(100, 100);
     this.addChild(this.box);
   }
 
-  update(delta: number) {
+  update(framesPassed: number) {
     if (
       this.box.transform.position.x < 0 ||
       this.box.transform.position.x >= window.innerWidth - this.box.width
@@ -33,5 +32,3 @@ class Example extends Scene {
     this.box.position.y += this.state.velocity.y;
   }
 }
-
-export const ExampleScene = (app: Application) => new Example(app);

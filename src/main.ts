@@ -1,11 +1,14 @@
-import { App } from "./App";
-import { ExampleScene } from "./scene/Example";
+import { Game } from "./Game";
+import { IScene } from "./scenes";
+import { ExampleScene } from "./scenes/Example";
+
+const scenes: Record<string, IScene> = {
+  example: new ExampleScene(),
+};
 
 const main = async () => {
-  let app = new App();
-  app.handleResize();
-  // TODO: load assets
-  app.loadScene(ExampleScene);
+  Game.initialize();
+  Game.loadScene(scenes.example);
 };
 
 main();
